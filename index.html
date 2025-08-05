@@ -1,0 +1,454 @@
+<!DOCTYPE html>  
+<html lang="id">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>DranBrawl</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+  <link  
+  rel="stylesheet"  
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"  
+/>  
+  <style>  
+    body {  
+      font-family: 'Rubik', sans-serif;  
+      background-color: #000;  
+      color: #fff;  
+      margin: 0;  
+      padding: 0;  
+    }  
+    blockquote {
+  border-bottom: 2px solid #333;
+  padding-bottom: 12px;
+  margin: 10px 0;
+  color: #888; 
+    }
+    @keyframes glow-only {
+      0% {
+        box-shadow: 0 0 24px rgba(255, 0, 85, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 48px rgba(255, 0, 85, 1);
+      }
+      100% {
+        box-shadow: 0 0 24px rgba(255, 0, 85, 0.5);
+      }
+    }
+    @keyframes glow-dev {
+      0% {
+        box-shadow: 0 0 24px rgba(0, 145, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 48px rgba(0, 145, 255, 1);
+      }
+      100% {
+        box-shadow: 0 0 24px rgba(0, 145, 255, 0.5);
+      }
+    }
+    .btn-glow-only {
+      background: linear-gradient(to bottom, #FF6599, #ff0055);
+      font-family: 'Archivo Black', sans-serif;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      outline: 1px solid #fff;
+      border: none;
+      border-bottom: 4px solid #990033;
+      border-radius: 360px;
+      font-size: 16px;
+      margin: 20px auto;
+      cursor: pointer;
+      text-decoration: none;
+      display: block; /* Biar jadi full-width */
+      width: calc(100% - 40px); /* Ngurangin padding margin biar presisi */
+      max-width: 240px; /* Opsional: batas max biar gak jelek di desktop gede */animation: glow-only 2s infinite ease-in-out;
+    }  
+    img.banner {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+      display: block;  
+    }  
+    .profile {  
+      text-align: left;  
+      margin-top: -40px;  
+      margin-left: 20px;
+    }  
+    .profile img.avatar {  
+      width: 90px;  
+      height: 90px;  
+      border-radius: 50%;  
+      border: 3px solid black;  
+    }  
+    h1 {  
+      padding: 0 7px;
+      margin-top: 10px;  
+      font-size: 24px;  
+    }  
+    p {  
+      color: #d4d4d4;
+      padding: 0 7px;  
+      font-size: 16px;  
+    }
+    .content {
+      margin: 0 20px;
+      padding: 0 0px;
+    }
+    .invite-btn {
+      background: linear-gradient(to bottom, #65C9FF, #00a5ff);
+      font-family: 'Archivo Black', sans-serif;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      outline: 1px solid #fff;
+      border: none;
+      border-bottom: 4px solid #006399;
+      border-radius: 360px;
+      font-size: 16px;
+      margin: 20px auto;
+      cursor: pointer;
+      text-decoration: none;
+      display: block; 
+      width: calc(100% - 40px); 
+      max-width: 240px;
+    }      
+   .btn-group {
+  display: flex;  
+  justify-content: center;  
+  margin: 20px auto;  
+  width: calc(100% - 40px);  
+  max-width: 240px;
+}  
+.btn {  
+  font-weight: 900;  
+  font-family: 'Archivo Black', sans-serif;  
+  font-size: 16px;  
+  padding: 12px 20px;  
+  border: none;  
+  cursor: pointer;  
+  color: white;  
+}  
+.left-btn {  
+  outline: 1px solid #fff;
+  min-width: 144px;
+  background: linear-gradient(to right, #65C9FF, #00a5ff);
+  border-bottom: 4px solid #006399;  
+  border-top-left-radius: 100px;  
+  border-bottom-left-radius: 100px;  
+} 
+.right-btn {  
+  outline: 1px solid #fff;
+  min-width: 144px;
+  background: linear-gradient(to left, #BA65FF, #8d00ff);  
+  border-bottom: 4px solid #540099;  
+  border-top-right-radius: 100px;  
+  border-bottom-right-radius: 100px; 
+  color: gold;  
+}  
+    .divider {
+      height: 2px;
+      background-color: #444;
+      margin: 30px auto;
+      width: 100%;
+      max-width: 360px; /* Biar nggak kebablasan lebar */
+      box-sizing: border-box;
+    }  
+    .section {  
+      padding: 0 20px; 
+    }
+    .sectionauouweh {
+      padding: 0px;
+      text-align: center;
+    }  
+    .command-box {  
+      background-color: #1a1a1a;  
+      padding: 15px;  
+      border-radius: 12px;  
+      margin-bottom: 20px;  
+    }  
+    .command-box h3 {  
+      margin-top: 0;  
+    }  
+    .command-box code {  
+      display: block;  
+      margin-top: 8px;  
+      white-space: pre-wrap;  
+    }  
+    .faq-section {  
+  max-width: 800px;  
+  margin: 40px auto;  
+  color: white;  
+}  
+
+.faq-question {  
+  background-color: #1a1a1a;  
+  color: white;  
+  font-family: 'Rubik', sans-serif;
+  cursor: pointer;  
+  padding: 18px;  
+  width: 100%;  
+  text-align: left;  
+  border: none;  
+  border-radius: 12px;
+  border-top-left-radius: 0px;
+  outline: none;  
+  font-size: 16px;  
+  transition: background 0.3s ease;  
+  border-bottom: 2px solid #444;  
+  margin-top: 10px;
+}  
+
+.faq-question:hover {  
+  outline: 2px solid #00a5ff;
+  background-color: #333;
+  border-bottom: 2px solid #666;
+}  
+
+.faq-answer {  
+  padding: 0 18px;  
+  background: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+display: none;  
+  overflow: hidden;  
+}  
+
+.faq-answer p {  
+  margin: 15px 0;  
+}  
+  </style>  
+</head>  
+<body>  
+
+  <div class="header">  
+    <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402204531395395595/Tak_berjudul108_20250723180644-picsay.jpg?ex=6893103b&is=6891bebb&hm=78031b0bab3162dcf79cd406ab9e18ef2ef47c6fde971b30f180f9dcbe1302bc&" alt="DranBrawl Banner" class="banner"/>    
+    </div>      <div class="profile">    
+      <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1401501477851103364/Tak_berjudul132_20250730132049.jpg?ex=68927bb6&is=68912a36&hm=e07f8d95971e5937fc07f7fa33458ecdb70f5a7892d14f5399c75bdacaec3567&" alt="DranBrawl" class="avatar"/>    
+    <h1 style="font-family: 'Rubik', sans-serif;">DranBrawl <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402274940325199994/verified_app-picsay.png?ex=689351ce&is=6892004e&hm=eebcea505e16c16ca7fe7d891cf7cd9ef1aafa7144074cd491ee081d57b670ef&" alt="emoji" style="height: 1em; vertical-align: center;" /></h1>  
+    <p>🇮🇩 Indonesian based economy Discord bot</p>  
+  </div>
+  <div class="content">
+    <p style="text-align: justify;">Halo Brawler! Selamat datang di website resmi sementara <strong>DranBrawl</strong>! Bot ini merupakan bot berbasis economy berbahasa Indonesia coy! So, invite botnya sekarang ke server lu bro!</p>  
+  </div>
+
+  <div style="text-align: center;"><p>Invite Link:</p></div>
+    
+  <div class="btn-group">  
+    <button class="btn left-btn" style="text-align: left;">INVITE DRANBRAWL</button>  
+    <button class="btn right-btn" style="text-align: right; padding-left: 10px;">DRANBRAWL ELITE</button>  
+  </div>  
+  
+  <div style="text-align: center;"><p>Support:</p></div>
+
+<a href="https://discord.com/oauth2/authorize?client_id=ID_BOT_LU&scope=bot" class="invite-btn" style="background: linear-gradient(to bottom, #4CBF85, #00d86f); border-bottom: 4px solid #00723B;"><i class="fab fa-discord"></i> SUPPORT SERVER</a>
+  
+  <div class="divider"></div>  
+
+  <div class="sectionauouweh">  
+    <h3>FITUR & COMMAND</h3>  
+</div>
+
+  <div class="section">
+    <p>Berikut adalah divided list command-command yang tersedia di DranBrawl:</p>
+    <div class="command-box">  
+      <h3>📬 BASIC</h3>  
+      <code>  
+^help - menampilkan halaman bantuan
+^invite - link untuk invite DranBrawl
+^support - support server
+^info - menampilkan info bot
+^customcommand - membuat command custom
+^profile - menampilkan profile user
+^serverinfo - menampilkan info server
+^saran/feedback - memberi saran/feedback kepada Author
+^vault/premium - menampilkan paket subscription DranBrawl
+      </code>  
+    </div>
+    <div class="command-box">  
+<h3>⚒️ UTILITAS</h3>
+      <code>
+^avatar - menampilkan avatar user
+^setcurrency - mengubah simbol mata uang
+^resetcurrency - mereset simbol mata uang
+^tell - membuat embed message
+^tellraw - membuat embed message
+^ticket - membuat ticketing sistem di server anda
+       </code>
+    </div>  
+    <div class="command-box">  
+    <h3>💸 EKONOMI</h3>
+<code>
+^leaderboard - melihat papan peringkat
+^work - mencari nafkah
+^crime - melakukan kriminal
+^rob - mencuri seseorang
+^daily - klaim hadiah harian
+^weekly - klaim hadiah mingguan
+^monthly - klaim hadiah bulanan
+^deposit - masukan uang ke bank
+^withdraw - tarik uang dari bank
+^balance - melihat total uang
+^give - memberi uang
+^explore - mengeksplor area untuk mencari item
+^inventory - melihat inventory
+^craft - membuat sesuatu dari item
+^shop - melihat barang yang dijual
+^deepshop - melihat barang blackmarket
+^buy - membeli item atau barang
+^use - menggunakan item atau barang
+^send - memberi item atau barang
+^redeem - menukar kode redeem
+ </code>
+    </div>
+    <div class="command-box">  
+    <h3>🎲 GAMBLING</h3>
+      <code>
+^slots - mengadu nasib ngeslot
+^blackjack - mengadu nasib ngeblekjek
+^use lottery - mengadu nasib ngelotere
+      </code>
+    </div>
+  </div>
+  
+    <div class="divider"></div>  
+
+  <div class="sectionauouweh">
+    <h3> VOTE DRANBRAWL DI TOP.GG!</h3>
+  </div>
+
+  <div class="section">
+  <p>Yuk dukung terus DranBrawl dengan cara vote DranBrawl di top.gg!</p>
+    </div>
+  <a href="#" class="btn-glow-only">VOTE DRANBRAWL</a>
+
+  <div class="divider"></div>
+  
+  <div class="sectionauouweh">
+    <h3> VAULT PASS</h3>
+  </div>
+  
+    <div class="section">
+      <p>Vault Pass adalah sistem subscription DranBrawl, dengan mengaktifkan/berlangganan subscription maka anda akan mendapat benefit:</p>
+      <div class="command-box">
+        <h3><img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402234307267006494/Tak_berjudul120_20250725221716.png?ex=68932bf7&is=6891da77&hm=7bb005a88a2c90143fce9209c3c2004be69eae20ff087fc2219a79f632e10f52&" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> BASIC VAULT - 10K/bulan</h3>
+        <code>
+• Akses fitur PRO di DranBrawl
+• Tidak ada batasan Custom Command
+• Cooldown dipercepat
+• Bonus pendapatan
+• Badge khusus di Profile
+        </code>
+      </div>
+      <div class="command-box">
+        <h3><img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402234307501752400/ezgif.com-speed_4.gif?ex=68932bf7&is=6891da77&hm=9a69ec55aee4b9bf0319df9228bdd85d05256d8e483a40b86c150b348aed6026&" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> ROYALE VAULT - 35K/bulan</h3>
+        <code>
+• Akses fitur PRO di DranBrawl
+• Tidak ada batasan Custom Command
+• Cooldown dipercepat
+• Bonus pendapatan
+• Badge khusus di Profile
+• Unlock access DranBrawl Elite di Server anda
+• Bonus Crypto harian
+• Role khusus di Official Server
+        </code>
+      </div>
+      
+    <div class="faq-section">  
+  <h2>FAQ:</h2>  
+
+  <div class="faq-item">  
+    <button class="faq-question"><strong>Bagaimana cara subscribe Vault Pass?</strong></button>  
+    <div class="faq-answer">  
+      <blockquote>Anda dapat mengunjungi profil traktir developer menggunakan tombol di bawah website ini.</blockquote>  
+    </div>  
+  </div>  
+
+  <div class="faq-item">  
+    <button class="faq-question"><strong>Bagaimana jika saya sudah subscribe, namun saya tidak mendapatkan Vault Pass saya?</strong></button>  
+    <div class="faq-answer">  
+      <blockquote>Silakan hubungi support server official untuk bantuan lebih lanjut.</blockquote>  
+    </div>  
+  </div>  
+
+  <div class="faq-item">  
+    <button class="faq-question"><strong>Bagaimana jika saya ingin mengajukan refund?</strong></button>  
+    <div class="faq-answer">  
+      <blockquote>Refund hanya tersedia dalam kondisi tertentu. Hubungi support untuk info lanjut.</blockquote>  
+    </div>  
+  </div>  
+
+  <div class="faq-item">  
+    <button class="faq-question"><strong>Bagaimana jika ingin berlangganan diluar mata uang Rupiah?</strong></button>  
+    <div class="faq-answer">  
+      <blockquote>Saat ini kami hanya menerima pembayaran dalam mata uang Rupiah via Trakteer.</blockquote>  
+    </div>  
+  </div>  
+    </div>  
+    <script>  
+  const faqs = document.querySelectorAll(".faq-question");  
+
+  faqs.forEach((faq) => {  
+    faq.addEventListener("click", () => {  
+      const answer = faq.nextElementSibling;  
+      const isOpen = answer.style.display === "block";  
+
+      // Tutup semua yg lain  
+      document.querySelectorAll(".faq-answer").forEach((el) => {  
+        el.style.display = "none";  
+      });  
+
+      // Toggle yg dipencet  
+      answer.style.display = isOpen ? "none" : "block";  
+    });  
+  });  
+    </script>  
+<a href="https://discord.com/oauth2/authorize?client_id=ID_BOT_LU&scope=bot" class="invite-btn" style="animation: glow-dev 2s infinite ease-in-out;">TRAKTEER DEVELOPER</a>  
+      
+    <div class="divider"></div>  
+
+    <footer style="padding: 0px 10px; background-color: #000; color: white; text-align: center;">  
+  <div style="margin-bottom: 20px;">  
+    <button style="margin: 5px; padding: 12px 20px; border-radius: 360px; border: none; background-color: white; color: black; font-weight: 500; font-family: 'Rubik', sans-serif;">  
+      Privacy Policy  
+    </button>  
+    <button style="margin: 5px; padding: 12px 20px; border-radius: 360px; border: none; background-color: white; color: black; font-weight: 500; font-family: 'Rubik', sans-serif;">  
+      Terms of Services  
+    </button>  
+  </div>  
+    
+  <div style="margin-top: 30px;">  
+    <p style="margin-bottom: 10px;"><strong>Follow us on:</strong></p>  
+    <div style="font-size: 24px;">  
+      <a href="https://discord.com/" target="_blank" style="margin: 0 4px; color: white;">
+        <i class="fab fa-discord"></i></a>  
+      <a href="https://instagram.com/aldeeraverse" target="_blank" style="margin: 0 4px; color: white;">  
+        <i class="fab fa-instagram"></i></a>  
+      <a href="https://youtube.com/" target="_blank" style="margin: 0 4px; color: white;">  
+        <i class="fab fa-youtube"></i></a>  
+    </div>  
+  </div>  
+    </footer>
+
+      <footer style="padding: 0px 0px; background-color: #000; color: white; text-align: left;">  
+  
+  <div style="margin-top: 30px; font-size: 12px; line-height: 0>.7; color: #808080;">  
+    <p><strong>Contact Developer:</strong></p>  
+    <p style="font-size: 13px;">aldeerarealms@gmail.com (support mail)</p>  
+    <p style="font-size: 13px;">nidroverse@gmail.com (dev)</p>  
+    <p style="font-size: 13px;">92002 Indonesia</p>  
+  </div>  
+    </footer>
+    
+      <div class="divider"></div>  
+    
+    <footer style="padding: 0px 0px; background-color: #000; color: white; text-align: center;">  
+  <p style="font-size: 13px; color: #808080;">DranBrawl ©2025 - all rights reserved</p>  
+  <p style="font-weight: bold; margin-top: 24px; padding: 0px; text-align: right; color: #2a2a2a;">NIDRAN CORPORATION</p>  
+    </footer>  
+  </div>  
+
+</body>  
+</html>
+
+  
