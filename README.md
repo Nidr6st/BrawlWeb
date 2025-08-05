@@ -1,2 +1,0 @@
-# BrawlWeb
-BrawlWeb html code
