@@ -450,15 +450,19 @@ display: none;
 
       <h3 style="text-align: center;">KODE REDEEM HARIAN 🤑</h3>
 
-      <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <div id="redeem-countdown" style="text-align: center; color: rgba(255, 255, 255, 0.75); font-family: 'Rubik', Sans serif; font-size: 0.9rem;">
+  Reset in: calculating...
+      </div>
+      
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: 24px; gap: 10px; flex-wrap: wrap;">
 
         <div id="redeem-code"
-             style="font-family: courier new; color: #fff; padding: 15px 20px; background: rgba(255, 255, 255, 0.15); border-radius: 10px; text-align: center; min-width: 220px;">
+             style="font-family: courier new; color: #fff; padding: 15px 20px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; text-align: center; min-width: 240px;">
           Loading BrawlRedeem...
         </div>
 
         <button onclick="copyRedeemCode()"
-                style="background-color: rgba(255, 255, 255, 0.15); border: none; border-bottom: 2px solid rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                style="background-color: rgba(255, 255, 255, 0.15); border: none; border-bottom: 2px solid rgba(255, 255, 255, 0.3); padding: 11px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                stroke="currentColor" width="24" height="24" style="color: white;">
@@ -473,6 +477,23 @@ display: none;
       </div>
 
       <script>
+        
+        function updateCountdown() {
+  const now = new Date();
+  const tomorrow = new Date();
+  tomorrow.setUTCHours(24, 0, 0, 0); // Jam 00:00 UTC besok
+  const diff = tomorrow - now;
+
+  const hours = String(Math.floor(diff / 1000 / 60 / 60)).padStart(2, '0');
+  const minutes = String(Math.floor(diff / 1000 / 60) % 60).padStart(2, '0');
+  const seconds = String(Math.floor(diff / 1000) % 60).padStart(2, '0');
+
+  document.getElementById('redeem-countdown').textContent = `Reset in: ${hours}:${minutes}:${seconds} (UTC)`;
+}
+
+// Update tiap detik
+setInterval(updateCountdown, 1000);
+updateCountdown();
         fetch('https://nidr6st.github.io/BrawlRedeem/redeem.json')
           .then(res => res.json())
           .then(data => {
