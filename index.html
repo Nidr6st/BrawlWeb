@@ -446,8 +446,62 @@ display: none;
     </script>  
 <a href="https://discord.com/oauth2/authorize?client_id=ID_BOT_LU&scope=bot" class="invite-btn" style="animation: glow-dev 2s infinite ease-in-out;">TRAKTEER DEVELOPER</a>  
       
-    <div class="divider"></div>  
+      <div class="divider"></div>  
 
+      <h3 style="text-align: center;">KODE REDEEM HARIAN 🤑</h3>
+
+      <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+
+        <div id="redeem-code"
+             style="font-family: courier new; color: #fff; padding: 15px 20px; background: rgba(255, 255, 255, 0.15); border-radius: 10px; text-align: center; min-width: 220px;">
+          Loading BrawlRedeem...
+        </div>
+
+        <button onclick="copyRedeemCode()"
+                style="background-color: rgba(255, 255, 255, 0.15); border: none; border-bottom: 2px solid rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+               stroke="currentColor" width="24" height="24" style="color: white;">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+          </svg>
+          
+          </button>
+        <div id="copy-tooltip" style="display: none; margin-top: 8px; color: rgba(255, 255, 255, 0.75); font-size: 0.85rem;">
+          <i class="fas fa-check" style="color: rgba(255, 255, 255, 0.75); font-size: 1.2em;"></i> Copied to Clipboard!
+        </div>
+      </div>
+
+      <script>
+        fetch('https://nidr6st.github.io/BrawlRedeem/redeem.json')
+          .then(res => res.json())
+          .then(data => {
+            const el = document.getElementById('redeem-code');
+            el.textContent = data.code;
+          })
+          .catch(err => {
+            document.getElementById('redeem-code').textContent = 'Failed to load redeem code lur, akwowkak sabar ya.';
+            console.error("Redeem fetch error:", err);
+          });
+
+        function copyRedeemCode() {
+          const text = document.getElementById('redeem-code').textContent;
+          navigator.clipboard.writeText(text)
+            .then(() => {
+              const tooltip = document.getElementById('copy-tooltip');
+              tooltip.style.display = 'block';
+              setTimeout(() => {
+                tooltip.style.display = 'none';
+              }, 4800);
+            })
+            .catch(err => {
+              console.error('Failed to copy redeem code:', err);
+            });
+        }
+      </script>
+      
+      <div class="divider"></div>
+      
     <footer style="padding: 0px 10px; background-color: none; color: white; text-align: center;">  
   <div style="margin-bottom: 20px;">  
     <button style="margin: 5px; padding: 12px 20px; border-radius: 360px; border: none; background-color: white; color: black; font-weight: 500; font-family: 'Rubik', sans-serif;">  
