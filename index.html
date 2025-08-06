@@ -13,23 +13,23 @@
   <style>  
     body {  
       font-family: 'Rubik', sans-serif;  
-      background-color: #000;  
+      background: linear-gradient(to top, #000, #3d0014, #3d1800, #3d0014, #21003d, #00083d, #000);  
       color: #fff;  
       margin: 0;  
       padding: 0;  
     }  
     blockquote {
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 12px;
   margin: 10px 0;
-  color: #888; 
+  color: rgba(255, 255, 255, 0.7); 
     }
     @keyframes glow-only {
       0% {
         box-shadow: 0 0 24px rgba(255, 0, 85, 0.5);
       }
       50% {
-        box-shadow: 0 0 48px rgba(255, 0, 85, 1);
+        box-shadow: 0 0 48px rgba(255, 0, 85, 0.75);
       }
       100% {
         box-shadow: 0 0 24px rgba(255, 0, 85, 0.5);
@@ -37,17 +37,50 @@
     }
     @keyframes glow-dev {
       0% {
-        box-shadow: 0 0 24px rgba(0, 145, 255, 0.5);
+        box-shadow: 0 0 24px rgba(88, 101, 242, 0.5);
       }
       50% {
-        box-shadow: 0 0 48px rgba(0, 145, 255, 1);
+        box-shadow: 0 0 48px rgba(88, 101, 242, 0.75);
       }
       100% {
-        box-shadow: 0 0 24px rgba(0, 145, 255, 0.5);
+        box-shadow: 0 0 24px rgba(88, 101, 242, 0.5);
+      }
+    }
+    @keyframes glow-support {
+      0% {
+        box-shadow: 0 0 24px rgba(0, 255, 62, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 48px rgba(0, 255, 62, 0.75);
+      }
+      100% {
+        box-shadow: 0 0 24px rgba(0, 255, 62, 0.5);
+      }
+    }
+    @keyframes glow-invite1 {
+      0% {
+        box-shadow: 0 0 24px rgba(0, 165, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 48px rgba(0, 165, 255, 0.75);
+      }
+      100% {
+        box-shadow: 0 0 24px rgba(0, 165, 255, 0.5);
+      }
+    }
+    @keyframes glow-invite2 {
+      0% {
+        box-shadow: 0 0 24px rgba(141, 0, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 48px rgba(141, 0, 255, 0.75);
+      }
+      100% {
+        box-shadow: 0 0 24px rgba(141, 0, 255, 0.5);
       }
     }
     .btn-glow-only {
-      background: linear-gradient(to bottom, #FF6599, #ff0055);
+      background: radial-gradient(circle, #FF6599, #ff0055);
       font-family: 'Archivo Black', sans-serif;
       color: white;
       padding: 12px 24px;
@@ -79,15 +112,16 @@
       width: 90px;  
       height: 90px;  
       border-radius: 50%;  
-      border: 3px solid black;  
-    }  
+      border: 1px solid white;
+      margin-top: 6px;
+      }  
     h1 {  
       padding: 0 7px;
       margin-top: 10px;  
       font-size: 24px;  
     }  
     p {  
-      color: #d4d4d4;
+      color: rgba(255, 255, 255, 0.75);
       padding: 0 7px;  
       font-size: 16px;  
     }
@@ -96,14 +130,14 @@
       padding: 0 0px;
     }
     .invite-btn {
-      background: linear-gradient(to bottom, #65C9FF, #00a5ff);
+      background: radial-gradient(circle, #8792F2, #5865F2);
       font-family: 'Archivo Black', sans-serif;
       color: white;
       padding: 12px 24px;
       text-align: center;
       outline: 1px solid #fff;
       border: none;
-      border-bottom: 4px solid #006399;
+      border-bottom: 4px solid #323B8C;
       border-radius: 360px;
       font-size: 16px;
       margin: 20px auto;
@@ -112,7 +146,7 @@
       display: block; 
       width: calc(100% - 40px); 
       max-width: 240px;
-    }      
+      }      
    .btn-group {
   display: flex;  
   justify-content: center;  
@@ -132,23 +166,26 @@
 .left-btn {  
   outline: 1px solid #fff;
   min-width: 144px;
-  background: linear-gradient(to right, #65C9FF, #00a5ff);
-  border-bottom: 4px solid #006399;  
+  background: linear-gradient(to left, #65c9ff, #00a5ff);
+  border-bottom: 4px solid #006399;;  
   border-top-left-radius: 100px;  
-  border-bottom-left-radius: 100px;  
+  border-bottom-left-radius: 100px; 
+  animation: glow-invite1 2s infinite ease-in-out;
 } 
 .right-btn {  
   outline: 1px solid #fff;
   min-width: 144px;
-  background: linear-gradient(to left, #BA65FF, #8d00ff);  
+  background: linear-gradient(to right, #BA65FF, #8d00ff);  
   border-bottom: 4px solid #540099;  
   border-top-right-radius: 100px;  
   border-bottom-right-radius: 100px; 
   color: gold;  
+  animation: glow-invite2 2s infinite ease-in-out;
 }  
     .divider {
       height: 2px;
-      background-color: #444;
+      background-color: #fff;
+      opacity: 0.2;
       margin: 30px auto;
       width: 100%;
       max-width: 360px; /* Biar nggak kebablasan lebar */
@@ -162,10 +199,9 @@
       text-align: center;
     }  
     .command-box {  
-      background-color: #1a1a1a;  
+      background-color: rgba(255, 255, 255, 0.15);
       padding: 15px;  
-      border-radius: 12px;  
-      margin-bottom: 20px;  
+      margin-bottom: 2px;  
     }  
     .command-box h3 {  
       margin-top: 0;  
@@ -177,12 +213,12 @@
     }  
     .faq-section {  
   max-width: 800px;  
-  margin: 40px auto;  
+  margin: 28px auto;
   color: white;  
 }  
 
 .faq-question {  
-  background-color: #1a1a1a;  
+  background-color: rgba(255, 255, 255, 0.15);  
   color: white;  
   font-family: 'Rubik', sans-serif;
   cursor: pointer;  
@@ -195,14 +231,14 @@
   outline: none;  
   font-size: 16px;  
   transition: background 0.3s ease;  
-  border-bottom: 2px solid #444;  
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);  
   margin-top: 10px;
 }  
 
 .faq-question:hover {  
-  outline: 2px solid #00a5ff;
-  background-color: #333;
-  border-bottom: 2px solid #666;
+  outline: 1.5px solid #00a5ff;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 }  
 
 .faq-answer {  
@@ -220,16 +256,28 @@ display: none;
   </style>  
 </head>  
 <body>  
-
+  
   <div class="header">  
     <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402204531395395595/Tak_berjudul108_20250723180644-picsay.jpg?ex=6893103b&is=6891bebb&hm=78031b0bab3162dcf79cd406ab9e18ef2ef47c6fde971b30f180f9dcbe1302bc&" alt="DranBrawl Banner" class="banner"/>    
-    </div>      <div class="profile">    
-      <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1401501477851103364/Tak_berjudul132_20250730132049.jpg?ex=68927bb6&is=68912a36&hm=e07f8d95971e5937fc07f7fa33458ecdb70f5a7892d14f5399c75bdacaec3567&" alt="DranBrawl" class="avatar"/>    
-    <h1 style="font-family: 'Rubik', sans-serif;">DranBrawl <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402274940325199994/verified_app-picsay.png?ex=689351ce&is=6892004e&hm=eebcea505e16c16ca7fe7d891cf7cd9ef1aafa7144074cd491ee081d57b670ef&" alt="emoji" style="height: 1em; vertical-align: center;" /></h1>  
+    </div>      <div class="profile"> 
+      
+    <div style="display: flex; align-items: center; font-family: 'Rubik', sans-serif;">
+  <img src="https://cdn.discordapp.com/attachments/1393633085320335551/1401501477851103364/Tak_berjudul132_20250730132049.jpg?ex=6893cd36&is=68927bb6&hm=92d1b6bb8e60acb1b5f9e590797cef478c3826c8f87f2973f3a12b334012c83a&"
+       alt="DranBrawl" class="avatar" style="width: 90px; height: 90px; border-radius: 50%; margin-right: 12px;" />
+  
+  <div style="display: flex; flex-direction: column; position: relative; top: 24px;">
+    <div style="display: flex; align-items: center; font-size: 24px; font-weight: bold;">
+      DranBrawl <span style="background-color: #5865F2; color: white; font-size: 12px; font-weight: 500; padding: 2px 6px; border-radius: 4px; margin-left: 8px;"><i class="fas fa-check" style="color: #fff; font-size: 1.2em;"></i> APP</span>
+    </div>
+    <div style="color: rgba(255, 255, 255, 0.75); font-size: 16px; margin-top: 4px;">
+      Bot Prefixes: <code style="background-color: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 0 8px;">^</code>
+    </div>
+  </div>
+</div>  
     <p>🇮🇩 Indonesian based economy Discord bot</p>  
   </div>
-  <div class="content">
-    <p style="text-align: justify;">Halo Brawler! Selamat datang di website resmi sementara <strong>DranBrawl</strong>! Bot ini merupakan bot berbasis economy berbahasa Indonesia coy! So, invite botnya sekarang ke server lu bro!</p>  
+  <div class="command-box" style="margin: 20px 20px; border-radius: 12px;">
+    <p style="text-align: justify;">Halo Brawler! Selamat datang di website resmi sementara <strong>DranBrawl</strong>! Bot ini merupakan bot berbasis economy berbahasa Indonesia coy! So- invite botnya sekarang ke server lu bro!</p>
   </div>
 
   <div style="text-align: center;"><p>Invite Link:</p></div>
@@ -238,10 +286,10 @@ display: none;
     <button class="btn left-btn" style="text-align: center; padding-right: 10px;">BASIC</button>  
     <button class="btn right-btn" style="text-align: center; padding-left: 10px;">ELITE</button>  
   </div>  
-    
+  
   <div style="text-align: center;"><p>Support:</p></div>
 
-<a href="https://discord.com/oauth2/authorize?client_id=ID_BOT_LU&scope=bot" class="invite-btn" style="background: linear-gradient(to bottom, #4CBF85, #00d86f); border-bottom: 4px solid #00723B;"><i class="fab fa-discord"></i> SUPPORT SERVER</a>
+<a href="https://discord.com/oauth2/authorize?client_id=ID_BOT_LU&scope=bot" class="invite-btn" style="background: radial-gradient(circle, #36D887, #00d86f); border-bottom: 4px solid #00723B; animation: glow-support 2s infinite ease-in-out;"><i class="fab fa-discord"></i> SUPPORT SERVER</a>
   
   <div class="divider"></div>  
 
@@ -251,10 +299,9 @@ display: none;
 
   <div class="section">
     <p>Berikut adalah divided list command-command yang tersedia di DranBrawl:</p>
-    <div class="command-box">  
-      <h3>📬 BASIC</h3>  
-      <code>  
-^help - menampilkan halaman bantuan
+    <div class="command-box" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">  
+      <h3 style="text-align: right;">BAKU 📬</h3>  
+      <code>^help - menampilkan halaman bantuan
 ^invite - link untuk invite DranBrawl
 ^support - support server
 ^info - menampilkan info bot
@@ -266,9 +313,8 @@ display: none;
       </code>  
     </div>
     <div class="command-box">  
-<h3>⚒️ UTILITAS</h3>
-      <code>
-^avatar - menampilkan avatar user
+<h3 style="text-align: right;">UTILITAS ⚒️</h3>
+      <code>^avatar - menampilkan avatar user
 ^setcurrency - mengubah simbol mata uang
 ^resetcurrency - mereset simbol mata uang
 ^tell - membuat embed message
@@ -277,9 +323,8 @@ display: none;
        </code>
     </div>  
     <div class="command-box">  
-    <h3>💸 EKONOMI</h3>
-<code>
-^leaderboard - melihat papan peringkat
+    <h3 style="text-align: right;">EKONOMI 💸</h3>
+<code>^leaderboard - melihat papan peringkat
 ^work - mencari nafkah
 ^crime - melakukan kriminal
 ^rob - mencuri seseorang
@@ -301,10 +346,9 @@ display: none;
 ^redeem - menukar kode redeem
  </code>
     </div>
-    <div class="command-box">  
-    <h3>🎲 GAMBLING</h3>
-      <code>
-^slots - mengadu nasib ngeslot
+    <div class="command-box" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">  
+    <h3 style="text-align: right;">GAMBLING 🎲</h3>
+      <code>^slots - mengadu nasib ngeslot
 ^blackjack - mengadu nasib ngeblekjek
 ^use lottery - mengadu nasib ngelotere
       </code>
@@ -330,20 +374,18 @@ display: none;
   
     <div class="section">
       <p>Vault Pass adalah sistem subscription DranBrawl, dengan mengaktifkan/berlangganan subscription maka anda akan mendapat benefit:</p>
-      <div class="command-box">
-        <h3><img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402234307267006494/Tak_berjudul120_20250725221716.png?ex=68932bf7&is=6891da77&hm=7bb005a88a2c90143fce9209c3c2004be69eae20ff087fc2219a79f632e10f52&" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> BASIC VAULT - 10K/bulan</h3>
-        <code>
-• Akses fitur PRO di DranBrawl
+      <div class="command-box" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
+        <h3 style="text-align: center;"><img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402234307267006494/Tak_berjudul120_20250725221716.png?ex=68932bf7&is=6891da77&hm=7bb005a88a2c90143fce9209c3c2004be69eae20ff087fc2219a79f632e10f52&" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> BASIC VAULT - 10K/bulan</h3>
+        <code>• Akses fitur PRO di DranBrawl
 • Tidak ada batasan Custom Command
 • Cooldown dipercepat
 • Bonus pendapatan
 • Badge khusus di Profile
         </code>
       </div>
-      <div class="command-box">
-        <h3><img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402234307501752400/ezgif.com-speed_4.gif?ex=68932bf7&is=6891da77&hm=9a69ec55aee4b9bf0319df9228bdd85d05256d8e483a40b86c150b348aed6026&" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> ROYALE VAULT - 35K/bulan</h3>
-        <code>
-• Akses fitur PRO di DranBrawl
+      <div class="command-box" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+        <h3 style="text-align: center;"><img src="https://cdn.discordapp.com/attachments/1393633085320335551/1402234307501752400/ezgif.com-speed_4.gif?ex=68932bf7&is=6891da77&hm=9a69ec55aee4b9bf0319df9228bdd85d05256d8e483a40b86c150b348aed6026&" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> ROYALE VAULT - 35K/bulan</h3>
+        <code>• Akses fitur PRO di DranBrawl
 • Tidak ada batasan Custom Command
 • Cooldown dipercepat
 • Bonus pendapatan
@@ -353,7 +395,6 @@ display: none;
 • Role khusus di Official Server
         </code>
       </div>
-      
     <div class="faq-section">  
   <h2>FAQ:</h2>  
 
@@ -407,7 +448,7 @@ display: none;
       
     <div class="divider"></div>  
 
-    <footer style="padding: 0px 10px; background-color: #000; color: white; text-align: center;">  
+    <footer style="padding: 0px 10px; background-color: none; color: white; text-align: center;">  
   <div style="margin-bottom: 20px;">  
     <button style="margin: 5px; padding: 12px 20px; border-radius: 360px; border: none; background-color: white; color: black; font-weight: 500; font-family: 'Rubik', sans-serif;">  
       Privacy Policy  
@@ -420,35 +461,34 @@ display: none;
   <div style="margin-top: 30px;">  
     <p style="margin-bottom: 10px;"><strong>Follow us on:</strong></p>  
     <div style="font-size: 24px;">  
-      <a href="https://discord.gg/94FRccCzNf" target="_blank" style="margin: 0 4px; color: white;">
+      <a href="https://discord.com/" target="_blank" style="margin: 0 4px; color: white;">
         <i class="fab fa-discord"></i></a>  
       <a href="https://instagram.com/aldeeraverse" target="_blank" style="margin: 0 4px; color: white;">  
         <i class="fab fa-instagram"></i></a>  
-      <a href="https://youtube.com/@aldeeratv?si=Snf_-idDVZcH7ALO" target="_blank" style="margin: 0 4px; color: white;">  
+      <a href="https://youtube.com/" target="_blank" style="margin: 0 4px; color: white;">  
         <i class="fab fa-youtube"></i></a>  
     </div>  
   </div>  
     </footer>
 
-      <footer style="padding: 0px 0px; background-color: #000; color: white; text-align: left;">  
+      <footer style="padding: 0px 0px; background-color: none; text-align: left;">  
   
-  <div style="margin-top: 30px; font-size: 12px; line-height: 0>.7; color: #808080;">  
-    <p><strong>Contact Developer:</strong></p>  
-    <p style="font-size: 13px;">aldeerarealms@gmail.com (support mail)</p>  
-    <p style="font-size: 13px;">nidroverse@gmail.com (dev)</p>  
-    <p style="font-size: 13px;">92002 Indonesia</p>  
+  <div style="margin-top: 30px; font-size: 12px; line-height: 0.7;">  
+    <p style="color: rgba(255, 255, 255, 0.4)"><strong>Contact Developer:</strong></p>  
+    <p style="font-size: 13px; color: rgba(255, 255, 255, 0.4)">aldeerarealms@gmail.com (support mail)</p>  
+    <p style="font-size: 13px; color: rgba(255, 255, 255, 0.4)">nidroverse@gmail.com (dev)</p>  
+    <p style="font-size: 13px; color: rgba(255, 255, 255, 0.4)">Indonesia bagian Gaul</p>  
   </div>  
     </footer>
     
       <div class="divider"></div>  
     
-    <footer style="padding: 0px 0px; background-color: #000; color: white; text-align: center;">  
-  <p style="font-size: 13px; color: #808080;">DranBrawl ©2025 - all rights reserved</p>  
-  <p style="font-weight: bold; margin-top: 24px; padding: 0px; text-align: right; color: #2a2a2a;">NIDRAN CORPORATION</p>  
+    <footer style="padding: 0px 0px; background-color: none; color: white; text-align: center;">  
+  <p style="font-size: 13px; color: rgba(255, 255, 255, 0.4);">DranBrawl ©2025 - all rights reserved</p>  
+  <p style="font-weight: bold; margin-top: 24px; padding: 0px; text-align: right; color: rgba(255, 255, 255, 0.15);">NIDRAN CORPORATION</p>  
     </footer>  
   </div>  
 
 </body>  
 </html>
 
-  
