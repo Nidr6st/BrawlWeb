@@ -1,28 +1,27 @@
-<pre id="redeem-json" style="background: #1a1a1a; color: #00ffea; padding: 20px; border-radius: 10px; max-width: 90%; margin: 20px auto; font-size: 1rem;"></pre>
+const fs = require("fs");
 
-<script>
-          function generateDailyCode() {
-            const today = new Date().toISOString().split('T')[0]; // ex: "2025-08-06"
-            const seed = today.replace(/-/g, '');
+function generateDailyCode() {
+  const today = new Date().toISOString().split("T")[0]; // ex: "2025-08-06"
+  const seed = today.replace(/-/g, "");
+  let code = "";
 
-            let code = '';
-            for (let i = 0; i < 3; i++) {
-              let part = '';
-              for (let j = 0; j < 4; j++) {
-                const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                const index = Math.floor(Math.abs(Math.sin(parseInt(seed) + i * 10 + j)) * charSet.length) % charSet.length;
-                part += charSet[index];
-              }
-              code += part + (i < 2 ? '-' : '');
-            }
+  for (let i = 0; i < 3; i++) {
+    let part = "";
+    for (let j = 0; j < 4; j++) {
+      const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const index = Math.floor(Math.abs(Math.sin(parseInt(seed) + i * 10 + j)) * charSet.length) % charSet.length;
+      part += charSet[index];
+    }
+    code += part + (i < 2 ? "-" : "");
+  }
 
-            const json = {
-              date: today,
-              code: code
-            };
+  const json = {
+    date: today,
+    code: code
+  };
 
-            document.getElementById('redeem-json').textContent = JSON.stringify(json, null, 2);
-          }
+  fs.writeFileSync("redeem.json", JSON.stringify(json, null, 2));
+  console.log("✅ redeem.json generated!");
+}
 
-          window.onload = generateDailyCode;
-        </script> 
+generateDailyCode();
