@@ -24,6 +24,10 @@
       --accent-1: #8b5cf6;
       --accent-2: #06b6d4;
       --accent-3: #f472b6;
+      --primary: #3FBCFF;
+      --secondary: #8d00ff;
+      --success: #00d86f;
+      --danger: #ff0055;
          }
 
     body {  
@@ -48,12 +52,12 @@
       z-index:0;
       pointer-events:none;
       mix-blend-mode:screen;
-      opacity:0.28;
+      opacity:0.12;
       transition:transform 0.2s linear;
     }
-    .blob-a{width:520px;height:520px;left:-160px;top:-120px;background:linear-gradient(135deg,var(--accent-1),#ff6b6b);border-radius:50%;}
+    .blob-a{width:520px;height:520px;left:-160px;top:-120px;background:linear-gradient(135deg,var(--accent-1),#ff0055);border-radius:50%;}
     .blob-b{width:420px;height:420px;right:-120px;bottom:-120px;background:linear-gradient(135deg,var(--accent-2),#00a5ff);border-radius:50%;}
-    .blob-c{width:360px;height:360px;left:10%;bottom:10%;background:linear-gradient(135deg,var(--accent-3),#ffb86b);border-radius:50%;opacity:0.35}
+    .blob-c{width:360px;height:360px;left:10%;bottom:10%;background:linear-gradient(135deg,var(--accent-3),#8d00ff);border-radius:50%;opacity:0.24}
 
     @keyframes glow-only {
       0% {
@@ -238,6 +242,7 @@
       display: block;  
       margin-top: 8px;  
       white-space: pre-wrap;  
+      color: var(--muted);
     }  
     .faq-section {  
   max-width: 800px;  
@@ -512,7 +517,6 @@
         width: 32px;
         height: 32px;
       }
-    }
 
     @media (max-width: 480px) {
       .toolbar-container {
@@ -530,6 +534,39 @@
         padding-top: 60px;
       }
     }
+    .pricing-features {
+      list-style: none;
+      margin: 0px 0px;
+      margin-right: 16px;
+      text-align: left;
+      }
+
+    .pricing-features li {
+      padding: 4px 0;
+      color: var(--muted);
+      display: flex;
+      align-items: left;
+      gap: 12px;
+      }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--success);
+      font-weight: bold;
+     }
+      .pricing-features lol {
+        padding: 4px 0;
+        color: var(--muted);
+        display: flex;
+        align-items: left;
+        gap: 12px;
+        }
+
+      .pricing-features lol::before {
+        content: '✕';
+        color: var(--danger);
+        font-weight: bold;
+      }
   </style>  
 </head>  
 <body>  
@@ -567,7 +604,7 @@
     <div class="bg-blob blob-a floaty"></div>
   <div class="bg-blob blob-b floaty"></div>
   <div class="bg-blob blob-c floaty" style="animation-duration:4s"></div>
-  
+
   <div class="header">  
     <img src="https://i.imgur.com/BDrriMx.jpeg" alt="DranBrawl Banner" class="banner" style="mask-image: linear-gradient(to bottom, black 25%, transparent 100%)"/>    
     </div>      <div class="profile"> 
@@ -676,7 +713,7 @@
   <p>Yuk dukung terus DranBrawl dengan cara vote DranBrawl di top.gg!</p>
     </div>
   <a href="#" class="btn-glow-only">VOTE DRANBRAWL</a>
-    
+
   <div class="divider"></div>
 
   <div class="sectionauouweh">
@@ -685,14 +722,21 @@
 
     <div class="section">
       <p>Vault Pass adalah sistem subscription DranBrawl, dengan mengaktifkan/berlangganan subscription maka anda akan mendapat benefit:</p>
-      <div class="command-box" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
-        <h3 style="text-align: center;"><img src="https://i.imgur.com/8EYQlqX.png" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> BASIC VAULT - 10K/bulan</h3>
-        <code>• Akses fitur PRO di DranBrawl
-• Tidak ada batasan Custom Command
-• Cooldown dipercepat
-• Bonus pendapatan
-• Badge khusus di Profile
-        </code>
+      <div style="background-color: rgba(255, 255, 255, 0.15);
+      padding-top: 4px;
+      margin-bottom: 4px;  
+      outline: 1px solid rgba(255, 255, 255, 0.25); border-top-left-radius: 12px; border-top-right-radius: 12px;">
+        <h3 style="text-align: center;"><img src="https://i.imgur.com/8EYQlqX.png" alt="emoji" style="height: 1.5em; vertical-align: bottom;" /> BASIC VAULT</h3>
+        <ul class="pricing-features">
+          <div>Mulai dari <span style="color: var(--primary); font-weight: bold;">10K/bulan</span> kamu akan mendapatkan:</div>
+          <li style="margin-top: 12px;">Akses fitur PRO di DranBrawl</li>
+            <li>Tidak ada batasan Custom Command</li>
+              <li>Cooldown dipercepat</li> 
+                <li>Bonus pendapatan</li>
+                  <li>Badge khusus di Profile</li>
+        <lol><s style="opacity: 0.5;">Unlock access DranBrawl Elite di Server anda</s></lol>
+                  <lol><s style="opacity: 0.5;">Bonus Crypto harian</s></lol>
+                    <lol><s style="opacity: 0.5;">Role khusus di Official Server</s></lol></ul><br><br>
       </div>
 
 <div style="
@@ -703,26 +747,25 @@
   padding: 0px; /* jarak biar isi nggak nempel */
 ">
   <div style="
-    margin: 0;
+    margin: 0px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
     background: #2e004f; /* warna isi kotak */
   ">
-    <h3 style="text-align: center; margin-top: 4px; margin-bottom: 4px; padding-top: 16px;">
+    <h3 style="text-align: center; margin-top: 5px; margin-bottom: 16px; padding-top: 16px;">
       <img src="https://i.imgur.com/aLeCuoy.gif" alt="emoji" style="height: 1.5em; vertical-align: bottom;" />
-      ROYALE VAULT - 35K/bulan
-    </h3>
-    <code style="display: block;
-      white-space: pre-wrap; margin: 0 16px;">
-• Akses fitur PRO di DranBrawl  
-• Tidak ada batasan Custom Command  
-• Cooldown dipercepat  
-• Bonus pendapatan  
-• Badge khusus di Profile  
-• Unlock access DranBrawl Elite di Server anda  
-• Bonus Crypto harian  
-• Role khusus di Official Server  
-    </code>
+      ROYALE VAULT</h3>
+    <ul class="pricing-features">
+      <div>Mulai dari <span style="color: var(--primary); font-weight: bold;">35K/bulan</span> kamu akan mendapatkan:</div>
+      <li style="margin-top: 12px;">Akses fitur PRO di DranBrawl</li>
+        <li>Tidak ada batasan Custom Command</li>
+          <li>Cooldown dipercepat</li> 
+            <li>Bonus pendapatan</li>
+              <li>Badge khusus di Profile</li>
+                <li>Unlock access DranBrawl Elite di Server anda</li>
+                  <li>Bonus Crypto harian</li>
+                    <li>Role khusus di Official Server</li>
+    <lol><s style="opacity: 0.5;">Menguasai Asia Tenggara</s></lol></ul><br><br>
   </div>
   <h4 style="
     background: #8d00ff;
@@ -786,7 +829,7 @@
       if (!isCurrentlyOpen) {
         faq.classList.add("active");
         answer.classList.add("active");
-        
+
         // Smooth scroll ke FAQ yang dibuka
         setTimeout(() => {
           faq.scrollIntoView({
@@ -924,7 +967,7 @@ updateCountdown();
     function toggleMobileMenu() {
       const mobileMenu = document.getElementById('mobile-menu');
       const toggle = document.querySelector('.mobile-menu-toggle');
-      
+
       mobileMenu.classList.toggle('active');
       toggle.innerHTML = mobileMenu.classList.contains('active') ? '✕' : '☰';
     }
@@ -934,7 +977,7 @@ updateCountdown();
       const mobileMenu = document.getElementById('mobile-menu');
       const toggle = document.querySelector('.mobile-menu-toggle');
       const toolbar = document.querySelector('.toolbar');
-      
+
       if (!toolbar.contains(event.target) && mobileMenu.classList.contains('active')) {
         mobileMenu.classList.remove('active');
         toggle.innerHTML = '☰';
